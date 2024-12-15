@@ -36,3 +36,16 @@ function shoot()
         if (msl.y < 0 ) then del(msls, msl) end
     end
 end
+
+function check_collision(msl)
+    for enm in all(enms) do
+        if (collided(msl, enm)) then handle_collision(enm,msl) end
+    end
+end
+
+function handle_collision(enm, msl)
+    del(msls, msl)
+    pq("enemy",enm)
+    pq("enemies",enms)
+    del(enms, enm)
+end
